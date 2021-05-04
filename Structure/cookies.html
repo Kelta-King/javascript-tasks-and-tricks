@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies Store | Load | Delete | Update</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .kel-hover{
+            cursor:pointer;
+            transition-duration: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class='w3-content w3-light-gray' style='max-width: 500px;'>
+        <div class='w3-center w3-padding-16 w3-xlarge'>
+        Set Cookie in browser
+        </div>
+        <div class='w3-row'>
+            <div class='w3-col l6 m6 s6'>
+                <div class='w3-margin'>
+                    <input type="text" class='w3-input w3-round w3-border' placeholder="Cookie name..." id="cookie">
+                </div>
+            </div>
+            <div class='w3-col l6 m6 s6'>
+                <div class='w3-margin'>
+                    <input type="text" class='w3-input w3-round w3-border' placeholder="Data..." id="data">
+                </div>
+            </div>
+        </div>
+        <div class='w3-center'>
+            <button class='w3-button w3-round kel-hover w3-blue w3-margin'>Set Cookie</button>
+        </div>
+        <hr style="border-bottom:1px solid black">
+        <div class='w3-padding-16'>
+            <div class='w3-center w3-xlarge'>
+                List of all Cookies
+            </div>
+            <div id='cookies'>
+
+            </div>
+        </div>  
+    </div>
+    <script src="../Code/jsCookies.js"></script>
+</body>
+</html>
