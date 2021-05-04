@@ -29,7 +29,7 @@ class CookieThings{
             let btn = document.createElement("BUTTON");
             btn.innerText = 'Delete';
             btn.setAttribute("class", "w3-red w3-round w3-button kel-hover");
-            btn.onclick = function(event){
+            btn.onclick = () => {
                 return this.deleteCookie(cookie[0]);
             }
             div.appendChild(b);
