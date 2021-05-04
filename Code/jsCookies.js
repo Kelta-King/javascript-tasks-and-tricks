@@ -1,12 +1,17 @@
 
 class CookieThings{
-    constructor(){
-        this.allCookieNames = [];
-    }
     setCookie = (name, value, expiryDays) => {
+        // Checking proper details
+        if(name == '' || value == '' || expiryDays == ''){ 
+            alert("Please provide necessary details");
+            return false;
+        }
+        // Date attribute for cookie destroy
         let dt = new Date();
         dt.setTime(dt.setTime() + (expiryDays*24*60*60*1000));
         let cookieStr = `${name}=${value};expires=${dt.toUTCString()};path=/`;
+
+        // Setting cookie
         document.cookie = cookieStr;
         location.reload();
     }
@@ -16,6 +21,7 @@ class CookieThings{
         return true;
     }
     showCookies = () => {
+        // Getting cookie values
         let cookies = document.cookie;
         if(Number(cookies.length) == 0){
             let txt = document.createTextNode("No cookies are there");
@@ -25,9 +31,17 @@ class CookieThings{
             document.querySelector("#cookies").appendChild(div);
             return false;
         }
+
+        // Array convert
         cookies = cookies.split(";");
+
+        // Making sections for each array element
         cookies.forEach(cookie => {
+
+            // name value split
             cookie = cookie.split("=");
+
+            // Making blocks for section
             let div = document.createElement("DIV");
             let b = document.createElement("B");
             let br1 = document.createElement("BR");
@@ -38,15 +52,21 @@ class CookieThings{
             let btn = document.createElement("BUTTON");
             btn.innerText = 'Delete';
             btn.setAttribute("class", "w3-red w3-round w3-button kel-hover");
+
+            // Deleting cookie function
             btn.onclick = () => {
                 this.deleteCookie(cookie[0]);
                 location.reload();
             }
+
+            // Appending blocks of section
             div.appendChild(b);
             div.appendChild(value);
             div.appendChild(br1);
             div.appendChild(br2);
             div.appendChild(btn);
+
+            // Section append
             document.querySelector("#cookies").appendChild(div);
         });
     }
