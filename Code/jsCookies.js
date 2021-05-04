@@ -8,6 +8,7 @@ class CookieThings{
         dt.setTime(dt.setTime() + (expiryDays*24*60*60*1000));
         let cookieStr = `${name}=${value};expires=${dt.toUTCString()};path=/`;
         document.cookie = cookieStr;
+        location.reload();
     }
     deleteCookie = (name) => {
         let cookieStr = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
@@ -16,6 +17,14 @@ class CookieThings{
     }
     showCookies = () => {
         let cookies = document.cookie;
+        if(Number(cookies.length) == 0){
+            let txt = document.createTextNode("No cookies are there");
+            let div = document.createElement("DIV");
+            div.setAttribute("class", "w3-center w3-padding w3-margin w3-white w3-round");
+            div.appendChild(txt);
+            document.querySelector("#cookies").appendChild(div);
+            return false;
+        }
         cookies = cookies.split(";");
         cookies.forEach(cookie => {
             cookie = cookie.split("=");
@@ -30,7 +39,8 @@ class CookieThings{
             btn.innerText = 'Delete';
             btn.setAttribute("class", "w3-red w3-round w3-button kel-hover");
             btn.onclick = () => {
-                return this.deleteCookie(cookie[0]);
+                this.deleteCookie(cookie[0]);
+                location.reload();
             }
             div.appendChild(b);
             div.appendChild(value);
